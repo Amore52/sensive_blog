@@ -4,7 +4,6 @@ from django.db.models import Count
 
 
 def serialize_post(post):
-
     return {
         'title': post.title,
         'teaser_text': post.text[:200],
@@ -47,7 +46,7 @@ def index(request):
 
 def post_detail(request, slug):
     post = Post.objects.get(slug=slug)
-    comments = Comment.objects.filter(post=post)
+    comments = Comment.objects.filter(post=post).select_related('author')
     serialized_comments = []
     for comment in comments:
         serialized_comments.append({

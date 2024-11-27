@@ -8,9 +8,6 @@ class PopularPostManager(models.QuerySet):
     def popular(self):
         return self.annotate(likes_count=Count('likes', distinct=True)).order_by('-likes_count')
 
-    def fetch_with_comments_count(self):
-        return self.annotate(comments_count=Count('comments'))
-
 
 class Post(models.Model):
     title = models.CharField('Заголовок', max_length=200)
