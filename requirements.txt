@@ -3,4 +3,3 @@ environs[django]==9.3.0
 Pillow==9.5.*
 folium==0.10.0
 django-debug-toolbar==3.2
-setuptools==75.6.0
